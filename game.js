@@ -54,14 +54,14 @@ window.onkeydown = function(e) {
 };
 
 var position = {
-    x: 10 * width,
-    y: 4 * height
+    x: 10,
+    y: 4
 };
 
 var food = {
     position: {
-        x: 20 * width,
-        y: 20 * height
+        x: 20,
+        y: 20
     }
 };
 
@@ -73,18 +73,18 @@ setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     switch (direction) {
-        case directions.up: position.y -= height; break;
-        case directions.left: position.x -= width; break;
-        case directions.down: position.y += height; break;
-        case directions.right: position.x += width; break;
+        case directions.up: position.y--; break;
+        case directions.left: position.x--; break;
+        case directions.down: position.y++; break;
+        case directions.right: position.x++; break;
     }
 
     if (position.x === food.position.x && position.y === food.position.y) {
         points++;
 
         food.position = {
-            x: Math.round(Math.random() * 60) * width,
-            y: Math.round(Math.random() * 60) * height
+            x: Math.round(Math.random() * 60), 
+            y: Math.round(Math.random() * 60)
         };
     }
 
@@ -96,11 +96,11 @@ setInterval(function() {
 }, frameTimeMilliseconds);
 
 function drawSnake() {
-    ctx.rect(position.x, position.y, height, width);
+    ctx.rect(position.x * width, position.y * height, height, width);
 }
 
 function drawFood() {
-    ctx.fillRect(food.position.x, food.position.y, height, width);
+    ctx.fillRect(food.position.x * width, food.position.y * height, height, width);
 }
 
 function drawPoints() {
