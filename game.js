@@ -5,8 +5,13 @@ var canvas = document.querySelector('canvas#game');
 canvas.width = document.body.clientWidth;
 canvas.height = document.body.clientHeight;
 
-var height = Math.round(canvas.height / 60);
-var width = Math.round(canvas.height / 60);
+var board = {
+    width: 60,
+    height: 60
+};
+
+var width = Math.round(canvas.height / board.width);
+var height = Math.round(canvas.height / board.height);
 
 var ctx = canvas.getContext('2d');
 
@@ -85,8 +90,8 @@ setInterval(function() {
         points++;
 
         food.position = {
-            x: Math.round(Math.random() * 60), 
-            y: Math.round(Math.random() * 60)
+            x: Math.round(Math.random() * board.width), 
+            y: Math.round(Math.random() * board.height)
         };
     }
 
