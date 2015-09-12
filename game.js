@@ -53,9 +53,11 @@ window.onkeydown = function(e) {
     }
 };
 
-var position = {
-    x: 10,
-    y: 4
+var snake = {
+    position: {
+        x: 10,
+        y: 4
+    }
 };
 
 var food = {
@@ -73,13 +75,13 @@ setInterval(function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     switch (direction) {
-        case directions.up: position.y--; break;
-        case directions.left: position.x--; break;
-        case directions.down: position.y++; break;
-        case directions.right: position.x++; break;
+        case directions.up: snake.position.y--; break;
+        case directions.left: snake.position.x--; break;
+        case directions.down: snake.position.y++; break;
+        case directions.right: snake.position.x++; break;
     }
 
-    if (position.x === food.position.x && position.y === food.position.y) {
+    if (snake.position.x === food.position.x && snake.position.y === food.position.y) {
         points++;
 
         food.position = {
@@ -96,7 +98,7 @@ setInterval(function() {
 }, frameTimeMilliseconds);
 
 function drawSnake() {
-    ctx.rect(position.x * width, position.y * height, height, width);
+    ctx.rect(snake.position.x * width, snake.position.y * height, height, width);
 }
 
 function drawFood() {
