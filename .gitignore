@@ -1,0 +1,15 @@
+.DS_Store
+
+# Node stuff
+node_modules/
+
+# Vim stuff
+.swp
+.*.swp
+.swo
+.*.swo
+
+# IntelliJ stuff
+.idea/
+*.iml
+
